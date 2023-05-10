@@ -1,0 +1,14 @@
+---
+- hosts: ansibleserver
+ 
+  tasks:
+  - name: create a docker image for javademoapp
+    command: docker build -t javademoapp:latest .
+    args:
+      chdir: /opt/java-demo-app
+
+  - name: tag the image
+    command: docker tag javademoapp:latest jc02/javademoapp:latest
+
+  - name: push image to docker hub
+    command: docker push jc02/javademoapp:latest
