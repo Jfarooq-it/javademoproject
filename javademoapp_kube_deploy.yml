@@ -1,0 +1,13 @@
+---
+- hosts: kubernetes
+  user: root
+ 
+  tasks:
+  - name: deploy JavaDemoApp to AWS EKS Cluster
+    command: kubectl apply -f /tmp/javademoapp/javademoapp_deployment.yml
+
+  - name: create service for JavaDemoApp
+    command: kubectl apply -f /tmp/javademoapp/javademoapp_service.yml
+
+  - name: update deployment when new image is available on docker hub
+    command: kubectl rollout restart deployment.apps/javademoapp
