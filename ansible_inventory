@@ -1,0 +1,5 @@
+[kubernetes]
+private_ip_here
+
+[ansibleserver]
+private_ip_here
